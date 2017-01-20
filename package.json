@@ -1,0 +1,52 @@
+{
+  "name": "aliyun-egg",
+  "version": "0.1.0",
+  "description": "egg framework for aliyun",
+  "keywords": [
+    "egg", "egg-framework", "aliyun"
+  ],
+  "files": [
+    "index.js",
+    "app.js",
+    "agent.js",
+    "lib",
+    "config"
+  ],
+  "dependencies": {
+    "egg": "^0.8.0",
+    "egg-alinode": "^1.1.0",
+    "egg-mysql": "^1.0.1",
+    "egg-oss": "^1.0.0",
+    "egg-view-nunjucks": "^1.0.0"
+  },
+  "devDependencies": {
+    "ali-oss": "^4.8.0",
+    "autod": "^2.7.1",
+    "egg-bin": "^2.0.1",
+    "egg-mock": "^2.1.0",
+    "eslint": "^3.13.1",
+    "eslint-config-egg": "^3.2.0",
+    "rimraf": "^2.5.4",
+    "supertest": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test ",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "ci": {
+    "version": "6, 7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eggjs/aliyun-egg"
+  },
+  "author": "jtyjty99999 <jtyjty99999@126.com> (http://github.com/jtyjty99999)",
+  "license": "MIT"
+}
