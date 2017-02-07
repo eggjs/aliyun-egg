@@ -25,9 +25,10 @@ describe('test/aliyun-egg.test.js', () => {
     });
   });
 
-  describe.skip('oss plugin test', () => {
+  describe('oss plugin test', () => {
     let app;
     let lastUploadFileName;
+    let url;
     before(function* () {
       const ossConfig = {
         accessKeyId: config.accessKeyId,
@@ -38,6 +39,7 @@ describe('test/aliyun-egg.test.js', () => {
       };
       const store = oss(ossConfig);
       const bucket = 'ali-oss-test-bucket-test99';
+      url = 'http://' + bucket + '.' + region + '.aliyuncs.com';
       const result = yield store.putBucket(bucket, region);
       assert(result.bucket === bucket);
       assert(result.res.status === 200);
@@ -55,8 +57,9 @@ describe('test/aliyun-egg.test.js', () => {
     it('should upload file stream to oss', function* () {
       const result = yield request(app.callback()).get('/uploadtest').expect(200);
       lastUploadFileName = result.body.name;
+      const reg = new RegExp('^' + url);
       assert(typeof result.body.name === 'string');
-      assert(/^http:\/\/ali\-oss\-test\-bucket\-test99.oss\-test.aliyun\-inc.com/.test(result.body.url));
+      assert(reg.test(result.body.url));
       assert(result.body.res.status === 200);
     });
   });
