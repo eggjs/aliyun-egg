@@ -14,7 +14,7 @@ module.exports = {
     package: 'egg-mysql',
   },
 
-  view: {
+  nunjucks: {
     enable: true,
     package: 'egg-view-nunjucks',
   },
