@@ -19,8 +19,14 @@ describe('test/aliyun-egg.test.js', () => {
 
     it('should render', () => {
       return request(app.callback())
-        .get('/')
+        .get('/home')
         .expect('world')
+        .expect(200);
+    });
+    it('should render by default template nunjucks', () => {
+      return request(app.callback())
+        .get('/home2')
+        .expect('world2')
         .expect(200);
     });
   });

@@ -9,3 +9,10 @@ exports.alinode = {
   appid: '',
   secret: '',
 };
+exports.view = {
+  defaultViewEngine: 'nunjucks',
+  defaultExtension: '.nj',
+  mapping: {
+    '.nj': 'nunjucks',
+  },
+};

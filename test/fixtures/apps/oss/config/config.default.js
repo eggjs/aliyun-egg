@@ -10,3 +10,5 @@ exports.oss = {
     bucket: 'ali-oss-test-bucket-test99',
   },
 };
+
+exports.keys = 'aaa';

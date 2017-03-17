@@ -13,20 +13,20 @@
     "config"
   ],
   "dependencies": {
-    "egg": "^0.10.0",
+    "egg": "^1.0.0-rc.3",
     "egg-alinode": "^1.1.0",
-    "egg-mysql": "^1.1.0",
+    "egg-mysql": "^2.0.0",
     "egg-oss": "^1.0.1",
-    "egg-view-nunjucks": "^1.0.0"
+    "egg-view-nunjucks": "^2.0.0"
   },
   "devDependencies": {
     "ali-oss": "^4.8.0",
     "autod": "^2.7.1",
-    "egg-bin": "^2.0.2",
-    "egg-mock": "^2.3.1",
-    "eslint": "^3.15.0",
+    "egg-bin": "^2.4.0",
+    "egg-mock": "^3.2.0",
+    "eslint": "^3.17.1",
     "eslint-config-egg": "^3.2.0",
-    "rimraf": "^2.5.4",
+    "rimraf": "^2.6.1",
     "supertest": "^3.0.0"
   },
   "engines": {
