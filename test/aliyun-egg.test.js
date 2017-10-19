@@ -1,9 +1,6 @@
 'use strict';
 
-const request = require('supertest');
 const mm = require('egg-mock');
-const oss = require('ali-oss');
-const config = require('./fixtures/apps/oss/config/config.default').oss.client;
 const assert = require('assert');
 const env = process.env;
 const region = env.ALI_SDK_OSS_REGION || 'oss-cn-hangzhou';
@@ -16,15 +13,17 @@ describe('test/aliyun-egg.test.js', () => {
       app = utils.createApp('apps/web');
       return app.ready();
     });
+    afterEach(mm.restore);
+    after(() => app.close());
 
     it('should render', () => {
-      return request(app.callback())
+      return app.httpRequest()
         .get('/home')
         .expect('world')
         .expect(200);
     });
     it('should render by default template nunjucks', () => {
-      return request(app.callback())
+      return app.httpRequest()
         .get('/home2')
         .expect('world2')
         .expect(200);
@@ -34,34 +33,22 @@ describe('test/aliyun-egg.test.js', () => {
   describe('oss plugin test', () => {
     let app;
     let lastUploadFileName;
-    let url;
+    const bucket = 'ali-oss-test-bucket-test99';
+    const url = 'http://' + bucket + '.' + region + '.aliyuncs.com';
     before(function* () {
-      const ossConfig = {
-        accessKeyId: config.accessKeyId,
-        accessKeySecret: config.accessKeySecret,
-        endpoint: config.endpoint,
-        region,
-        callbackServer: 'http://d.rockuw.com:4567',
-      };
-      const store = oss(ossConfig);
-      const bucket = 'ali-oss-test-bucket-test99';
-      url = 'http://' + bucket + '.' + region + '.aliyuncs.com';
-      const result = yield store.putBucket(bucket, region);
-      assert(result.bucket === bucket);
-      assert(result.res.status === 200);
       app = utils.createApp('apps/oss');
       return app.ready();
     });
-
+    afterEach(mm.restore);
     after(function* () {
       if (lastUploadFileName) {
         yield app.oss.delete(lastUploadFileName);
       }
-      app.close();
+      yield app.close();
     });
 
     it('should upload file stream to oss', function* () {
-      const result = yield request(app.callback()).get('/uploadtest').expect(200);
+      const result = yield app.httpRequest().get('/uploadtest').expect(200);
       lastUploadFileName = result.body.name;
       const reg = new RegExp('^' + url);
       assert(typeof result.body.name === 'string');
@@ -76,9 +63,11 @@ describe('test/aliyun-egg.test.js', () => {
       app = utils.createApp('apps/mysqlapp-new');
       return app.ready();
     });
+    afterEach(mm.restore);
+    after(() => app.close());
 
     it('should query', () => {
-      return request(app.callback())
+      return app.httpRequest()
         .get('/')
         .expect(200);
     });

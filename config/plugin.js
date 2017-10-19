@@ -13,7 +13,10 @@ module.exports = {
     enable: true,
     package: 'egg-mysql',
   },
-
+  ons: {
+    enable: true,
+    package: 'egg-ons',
+  },
   nunjucks: {
     enable: true,
     package: 'egg-view-nunjucks',
