@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "egg framework for aliyun",
   "keywords": [
-    "egg", "egg-framework", "aliyun"
+    "egg",
+    "egg-framework",
+    "aliyun"
   ],
   "files": [
     "index.js",
@@ -13,35 +15,36 @@
     "config"
   ],
   "dependencies": {
-    "egg": "^1.0.0-rc.3",
-    "egg-alinode": "^1.1.0",
-    "egg-mysql": "^2.0.0",
-    "egg-oss": "^1.0.1",
-    "egg-view-nunjucks": "^2.0.0"
+    "egg": "^1.9.0",
+    "egg-alinode": "^1.1.1",
+    "egg-mysql": "^3.0.0",
+    "egg-ons": "^1.0.0",
+    "egg-oss": "^1.1.0",
+    "egg-view-nunjucks": "^2.1.4"
   },
   "devDependencies": {
-    "ali-oss": "^4.8.0",
-    "autod": "^2.7.1",
-    "egg-bin": "^2.4.0",
-    "egg-mock": "^3.2.0",
-    "eslint": "^3.17.1",
-    "eslint-config-egg": "^3.2.0",
-    "rimraf": "^2.6.1",
-    "supertest": "^3.0.0"
+    "autod": "^2.10.1",
+    "autod-egg": "^1.0.0",
+    "egg-bin": "^4.3.5",
+    "egg-mock": "^3.13.1",
+    "eslint": "^4.9.0",
+    "eslint-config-egg": "^5.1.1",
+    "rimraf": "^2.6.2"
   },
   "engines": {
     "node": ">=6.0.0"
   },
   "scripts": {
+    "autod": "autod",
+    "pkgfiles": "egg-bin pkgfiles --check",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test ",
     "cov": "egg-bin cov",
-    "lint": "eslint .",
-    "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "lint": "eslint . --fix",
+    "ci": "npm run autod -- --check && npm run pkgfiles && npm run lint && npm run cov"
   },
   "ci": {
-    "version": "6, 7"
+    "version": "6, 8"
   },
   "repository": {
     "type": "git",

@@ -3,6 +3,7 @@
 module.exports = {
   write: true,
   prefix: '^',
+  plugin: 'autod-egg',
   test: [
     'test',
     'benchmark',
@@ -17,10 +18,9 @@ module.exports = {
   devdep: [
     'egg-bin',
     'autod',
+    'autod-egg',
     'eslint',
     'eslint-config-egg',
-    'supertest',
-    'ali-oss',
   ],
   exclude: [
     './test/fixtures',
