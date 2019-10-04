@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "egg framework for aliyun",
   "keywords": [
-    "egg", "egg-framework", "aliyun"
+    "egg",
+    "egg-framework",
+    "aliyun"
   ],
   "files": [
     "index.js",
@@ -17,7 +19,8 @@
     "egg-alinode": "^1.1.0",
     "egg-mysql": "^2.0.0",
     "egg-oss": "^1.0.1",
-    "egg-view-nunjucks": "^2.0.0"
+    "egg-view-nunjucks": "^2.0.0",
+    "snyk": "^1.230.5"
   },
   "devDependencies": {
     "ali-oss": "^4.8.0",
@@ -38,7 +41,9 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "ci": {
     "version": "6, 7"
@@ -48,5 +53,6 @@
     "url": "https://github.com/eggjs/aliyun-egg"
   },
   "author": "jtyjty99999 <jtyjty99999@126.com> (http://github.com/jtyjty99999)",
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
