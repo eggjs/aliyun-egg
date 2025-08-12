@@ -13,7 +13,7 @@
     "config"
   ],
   "dependencies": {
-    "egg": "^1.0.0-rc.3",
+    "egg": "^2.0.0",
     "egg-alinode": "^1.1.0",
     "egg-mysql": "^2.0.0",
     "egg-oss": "^1.0.1",
